@@ -17,10 +17,10 @@ cd "$(dirname "$0")"
 LOGDIR="./log"
 
 time=$(date +"%Y-%m-%d_%H:%M:%S")
-errlog="$LOGDIR/stderr_$time.log"
-errlog="$(nodupe "$errlog")"
+logfile="$LOGDIR/log_$time.log"
+logfile="$(nodupe "$logfile")"
 
 mkdir -p log
 
 uv sync
-uv run retrieve.py 2> "$errlog"
+uv run retrieve.py &> "$logfile"
