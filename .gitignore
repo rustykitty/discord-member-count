@@ -225,6 +225,6 @@ __marimo__/
 
 config.json
 
-out/
+log/
 
 member_count.out
