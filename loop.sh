@@ -7,5 +7,5 @@ cd "$(dirname "$0")"
 while true
 do
     ./run.sh
-    sleep 600 # 5 minutes
+    sleep 300 # 5 minutes
 done
