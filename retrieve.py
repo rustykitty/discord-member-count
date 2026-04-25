@@ -31,6 +31,7 @@ if response.status_code == 200:
     with open("member_count.out", "a") as fp:
         # date, time, member count
         fp.write(f"{date}\t{time}\t{count}\n")
+    print("Written:", date, time, count)
 else:
     print("Non-200 status code returned. Please check it.")
     print("HTTP", response.status_code)
