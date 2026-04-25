@@ -23,4 +23,4 @@ logfile="$(nodupe "$logfile")"
 mkdir -p log
 
 uv sync
-uv run retrieve.py &> "$logfile"
+uv run retrieve.py | tee "$logfile"
