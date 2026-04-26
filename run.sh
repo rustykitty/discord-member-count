@@ -17,10 +17,15 @@ cd "$(dirname "$0")"
 LOGDIR="./log"
 
 time=$(date +"%Y-%m-%d_%H:%M:%S")
-logfile="$LOGDIR/log_$time.log"
-logfile="$(nodupe "$logfile")"
+errlog="$LOGDIR/log_$time.log"
+errlog="$(nodupe "$errlog")"
+stdoutlog="$LOGDIR/log_$time.log"
+stdoutlog="$(nodupe "$stdoutlog")"
+
+exec 2> >(tee "$errlog") 1> >(tee "$stdoutlog")
+
+echo "Current time is $time"
 
 mkdir -p log
 
-uv sync
-uv run retrieve.py | tee "$logfile"
+uv run retrieve.py
