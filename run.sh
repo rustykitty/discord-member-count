@@ -17,14 +17,10 @@ cd "$(dirname "$0")"
 LOGDIR="./log"
 
 time=$(date +"%Y-%m-%d_%H:%M:%S")
-errlog="$LOGDIR/log_$time.log"
+errlog="$LOGDIR/errlog_$time.log"
 errlog="$(nodupe "$errlog")"
-stdoutlog="$LOGDIR/log_$time.log"
-stdoutlog="$(nodupe "$stdoutlog")"
 
-exec 2> >(tee "$errlog") 1> >(tee "$stdoutlog")
-
-echo "Current time is $time"
+exec 2>> >(tee "$errlog") 1> /dev/null
 
 mkdir -p log
 
