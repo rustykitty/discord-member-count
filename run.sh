@@ -25,3 +25,8 @@ exec 2>> >(tee "$errlog") 1> /dev/null
 mkdir -p log
 
 uv run retrieve.py
+
+# cleanup: delete output file if empty
+if [ -s "$errlog" ]; then
+    rm "$errlog"
+fi
