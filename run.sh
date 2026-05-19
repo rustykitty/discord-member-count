@@ -27,6 +27,6 @@ mkdir -p log
 uv run retrieve.py
 
 # cleanup: delete output file if empty
-if [ -s "$errlog" ]; then
+if [ ! -s "$errlog" ]; then
     rm "$errlog"
 fi
